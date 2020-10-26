@@ -15,4 +15,5 @@ config = {
         }
       ]
 }
-rs.initiate(config)
+result = rs.initiate(config)
+printjson(result)
