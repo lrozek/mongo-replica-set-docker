@@ -6,6 +6,7 @@ services:
     command: ["--replSet", "rs0"]
     volumes:
       - ./rs-init:/rs-init
+      - ./init-data:/init-data
 networks:
   default:
     name: mongo-network
