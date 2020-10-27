@@ -1,11 +1,11 @@
 function getContainerIpAddress(){
 	docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$1"	
 }
-MONGO_HOST_1=mongo-replica-set-docker_mongo_1
-MONGO_IP_1=$(getContainerIpAddress $MONGO_HOST_1)
+
+MONGO_IP_1=$(getContainerIpAddress "mongo-replica-set-docker_mongo_1")
 MONGO_IP_2=$(getContainerIpAddress "mongo-replica-set-docker_mongo_2")
 MONGO_IP_3=$(getContainerIpAddress "mongo-replica-set-docker_mongo_3")
-mongo --host $MONGO_HOST_1 <<EOF
+mongo <<EOF
 config = {
     _id: "rs0",
     members: [
